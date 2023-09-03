@@ -1,0 +1,51 @@
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hire Me</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <nav>
+    <div class="logo">Pahiran</div>
+
+    <ul>
+  
+      <li><a href="{% url 'open_men_collection' %}">Mens Collection</a></li>
+      <li><a href="{% url 'open_women_collection' %}">Womens collection</a></li>
+    
+      <li><a href="{% url 'open_Hire_me' %}"> Work in Pahiran</a></li>
+      <li><a href="{% url 'open_my_detail' %}"> My details</a></li>
+      <li><a href="{% url 'logout_user' %}">Logout</a></li>
+
+    </ul>
+  </nav>
+<h2>Update User Details</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <label for="Firstname">First Name:</label>
+  <input type="text" name="Firstname" value="{{ my_detail.Firstname }}" required><br>
+  
+  <label for="Lastname">Last Name:</label>
+  <input type="text" name="Lastname" value="{{ my_detail.Lastname }}" required><br>
+  
+  <label for="job_role">Job Role:</label>
+  <input type="text" name="job_role" value="{{ my_detail.job_role }}" required><br>
+  
+  <label for="phonenumber">Phone Number:</label>
+  <input type="text" name="phonenumber" value="{{ my_detail.phonenumber }}" required><br>
+  
+  <label for="address">Address:</label>
+  <input type="text" name="address" value="{{ my_detail.address }}" required><br>
+  
+  <label for="my_image">Profile Image:</label>
+  <input type="file" name="my_image"><br>
+  
+  <button type="submit">Update</button>
+</form>
+</body>
+</html>

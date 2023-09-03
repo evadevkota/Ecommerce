@@ -1,0 +1,77 @@
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Pahiran</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <nav>
+        <div class="logo">Pahiran</div>
+    </nav>
+    
+    <div class="content">
+        <div class="home_image">
+            <img src="{% static 'Images/signup.jpeg' %}">
+        </div>
+        
+        <div class="container">
+            <div class="forms">
+                <div class="form login">
+                  
+                    
+                    
+                    <form action="{% url 'register' %}" method="POST">
+                        {% csrf_token %}
+                        <span class="title">Registration</span>
+                        <div class="input-field">
+                            <input type="text" name="username" placeholder="Enter your name" required>
+                  
+                        </div>
+                        
+                        <div class="input-field">
+                            <input type="text" name="email" placeholder="Enter your email" required>
+                           
+                        </div>
+                        
+                        <div class="input-field">
+                            <input type="text" name="password" class="password" placeholder="Create a password" required>
+                    
+                        </div>
+                        
+                        <div class="input-field">
+                            <input type="text" name="confirm_password" class="password" placeholder="Confirm your password" required>
+                     
+                         
+                        </div> 
+
+                        <div class="checkbox-text">
+                            <div class="checkbox-content">
+                                <input type="checkbox" id="termCon">
+                                <label for="termCon" class="text">I accept all terms and conditions</label>
+                            </div>
+                        </div>
+
+                        <div class="home_button">
+                            <button type="submit">Registration</button><br><br>
+                        
+                     <dialog >ffff</dialog>   
+                    </form>
+                    <div class="login-signup">
+                        <span class="text">Not a member?
+                            <a href="{% url 'open_login' %}" class="text signup-link">Login Now</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

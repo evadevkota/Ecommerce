@@ -1,0 +1,60 @@
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Pahiran</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <nav>
+    <div class="logo">Pahiran</div>
+
+    <ul>
+      <li><a href="{% url 'open_men_collection' %}">Mens Collection</a></li>
+      <li><a href="{% url 'open_women_collection' %}">Womens collection</a></li>
+
+      <li><a href="{% url 'open_Hire_me' %}"> Work in Pahiran</a></li>
+      <li><a href="{% url 'open_my_detail' %}"> My details</a></li>
+      <li><a href="{% url 'open_cart' %}">Open Cart</a></li>
+      <li><a href="{% url 'logout_user' %}">Logout</a></li>
+    </ul>
+  </nav>
+
+  {% for obj in product_list_show %}
+  <form action="{% url 'create_my_cart' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" name="title_values" value="{{ obj.title }}" required>
+    <input type="hidden" name="price_values" value="{{ obj.price }}" required>
+    <input type="hidden" name="type_values" value="{{ obj.type }}" required>
+    <input type="hidden" name="category_values" value="{{ obj.category }}" required>
+    <input type="hidden" name="my_image_values" value="{{ obj.image.url }}">
+    
+    <h2 class="title">{{ obj.title }}</h2>
+    
+    <div class="row">
+      <div class="col-4">
+        <img src="{{ obj.image.url }}" >
+        <h4>Type: {{ obj.type }}</h4>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-o"></i>
+        </div>
+        <p>Price: {{ obj.price }}</p>
+        
+        <div class="cart_button">
+          <button type="submit">Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  {% endfor %}
+</body>
+
+</html>

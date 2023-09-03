@@ -1,0 +1,88 @@
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hire Me</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <nav>
+    <div class="logo">Pahiran</div>
+
+    <ul>
+      <li><a href="{% url 'open_men_collection' %}">Mens Collection</a></li>
+      <li><a href="{% url 'open_women_collection' %}">Womens collection</a></li>
+
+      <li><a href="{% url 'open_Hire_me' %}"> Work in Pahiran</a></li>
+      <li><a href="{% url 'open_my_detail' %}"> My details</a></li>
+      <li><a href="{% url 'open_cart' %}">Open Cart</a></li>
+      <li><a href="{% url 'logout_user' %}">Logout</a></li>
+    </ul>
+  </nav>
+    <div class="content">
+        <div class="hire_image">
+            <img src="{% static 'Images/hire_me.jpeg'%}">
+        </div>
+     
+    <div class="container">
+        <div class="forms">
+            <div class="form login">
+              
+                <div class = "messages">
+                  {% for message in messages %}
+                  {{message}}
+              {% endfor %}</div>
+
+                <form action="{% url 'hire_me' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="title">Searching for Jobs?</span>
+                    <div class="input-field">
+                        <input type="text" name="Firstname"  placeholder="Enter your first name" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                      <input type="text" name="Lastname"  placeholder="Enter your Last name" required>
+                      <i class="uil uil-envelope icon"></i>
+                  </div>
+                  <div class="input-field">
+                      <select id="job_role" name="job_role">
+                        <option value="">Select Job Role</option>
+                        <option value="frontend">Dress Designer</option>
+                        <option value="backend">Counter Staff</option>
+                        <option value="full_stack">Delivery </option>
+                        <option value="ui_ux">Online buisness handling</option>
+                      </select>
+                   
+                  </div>
+                  <div class="input-field">
+                    <input type="text" name="phonenumber"  placeholder="Enter your phone number" required>
+                    <i class="uil uil-envelope icon"></i>
+                </div>
+                <div class="input-field">
+                  <input type="text" name="address"  placeholder="Enter your address" required>
+                  <i class="uil uil-envelope icon"></i>
+              </div>
+              <div class="input-field">
+                <input type="file" name="my_image">
+            </div>
+           
+                   
+   
+            <div class="home_button">
+              <button type="submit">Hire me</button>
+            </div>
+                    
+
+                
+                </form>
+
+              
+            </div>
+
+            
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Pahiran</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">Pahiran</div>
+
+
+    
+           
+           
+
+        </ul>
+    </nav>
+    <div class="content">
+        <div class="home_image">
+            <img src="{% static 'Images/background.jpeg'%}">
+        </div>
+        <div class="text ">
+            <h1>Dress that Vibe</h1>
+            <div class ="index_button">
+                <a href="{% url 'open_signup' %}">
+                <button type="button">Shop Now</button></a>
+        </div>
+        </div>
+        
+    </div>
+</body>
+
+</html>

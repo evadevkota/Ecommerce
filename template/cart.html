@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Pahiran</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <nav>
+    <div class="logo">Pahiran</div>
+    <ul>
+      <li><a href="{% url 'open_men_collection' %}">Mens Collection</a></li>
+      <li><a href="{% url 'open_women_collection' %}">Womens Collection</a></li>
+      <li><a href="{% url 'open_Hire_me' %}">Work in Pahiran</a></li>
+      <li><a href="{% url 'open_my_detail' %}">My Details</a></li>
+      <li><a href="{% url 'open_cart' %}">Open Cart</a></li>
+      <li><a href="{% url 'logout_user' %}">Logout</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h1>Your Shopping Cart</h1>
+    <div class="cart-items">
+      {% for obj in mycart_list_show %}
+      <div class="cart-item">
+       
+        <div class="item-details">
+          <p>Name: {{ obj.cart_title }}</p>
+          <p>Price: {{ obj.cart_price }}</p>
+          <p>Type: {{ obj.cart_type }}</p>
+          <div class="cart_button">
+          <button><a href="{% url 'delete_cart' obj.id %}">Remove</a></button></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="cart-total">
+      <p><a href="{% url 'total_price' %}">Total: ${{ total_price }}</a></p>
+      <button><a href="{% url 'checkout' %}">Checkout</a></button>
+    </div>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Pahiran</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <nav>
+    <div class="logo">Pahiran</div>
+
+    <ul>
+      <li><a href="{% url 'open_men_collection' %}">Mens Collection</a></li>
+      <li><a href="{% url 'open_women_collection' %}">Womens collection</a></li>
+
+      <li><a href="{% url 'open_Hire_me' %}"> Work in Pahiran</a></li>
+      <li><a href="{% url 'open_my_detail' %}"> My details</a></li>
+      <li><a href="{% url 'open_cart' %}">Open Cart</a></li>
+      <li><a href="{% url 'logout_user' %}">Logout</a></li>
+    </ul>
+  </nav>
+
+  {% for obj in mydetails_list_show %}
+  <form action="">
+    <div class="row">
+      <div class="col-4">
+        <h2 class ="title">  Name: {{ obj.Firstname }}&nbsp;{{ obj.Lastname }}</h2>
+          <img src="{{ obj.my_image.url}}">     
+          <p>Phonenumber- {{obj.phonenumber}}</p>
+          <p>Address {{obj.address}}</p>
+          <p>Job Role- {{obj.job_role}}</p>
+          
+
+      
+          <div class="Details_button">
+                    
+                      
+                
+            <button>  <a href="{% url 'delete_data' obj.id %}">Delete </a></button>
+            </div>
+            <div class="Details_button">
+            <button>  <a href="{% url 'update_data' obj.id %}">Update </a></button></div>
+</div>
+      </div>
+<ul>
+
+    <br>
+
+    </li>
+</ul>
+
+  </form>
+  {% endfor %}
+</body>
+
+</html>
